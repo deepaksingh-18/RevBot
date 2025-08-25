@@ -1,0 +1,419 @@
+/* Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #111;
+    color: #fff;
+    transition: background .3s, color .3s;
+    overflow-x: hidden;
+    height: 100vh;
+  }
+  
+  body.light {
+    background: #f6f8fa;
+    color: #21223a;
+  }
+  
+  /* Layout */
+  #app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 32px 0 32px;
+    flex-shrink: 0;
+  }
+  
+  .logo {
+    height: 32px;
+    width: auto;
+  }
+  
+  /* Theme Toggle */
+  .theme-switch {
+    position: relative;
+  }
+  
+  .theme-switch input[type="checkbox"] {
+    width: 44px;
+    height: 24px;
+    -webkit-appearance: none;
+    background: #222;
+    outline: none;
+    border-radius: 20px;
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  
+  .theme-switch input[type="checkbox"]:checked {
+    background: #42a5f5;
+  }
+  
+  .theme-switch label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 44px;
+    height: 24px;
+    cursor: pointer;
+  }
+  
+  .theme-switch input:before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.18s;
+  }
+  
+  .theme-switch input:checked:before {
+    left: 22px;
+  }
+  
+  /* Main Content */
+  main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .center-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 370px;
+    max-width: 95vw;
+    padding: 36px 24px 24px 24px;
+    text-align: center;
+    margin: 0 auto;
+    min-height: 60vh;
+  }
+  
+  .bot-img {
+    width: 64px;
+    margin-bottom: 14px;
+  }
+  
+  h1 {
+    margin: 0 0 28px 0;
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #42a5f5;
+    letter-spacing: 0.03em;
+  }
+  
+  /* Sound Wave */
+  .sound-wave {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 4px;
+    height: 46px;
+    margin: 0 0 24px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .wave-bar {
+    width: 6px;
+    height: 18px;
+    background: #2b3956;
+    border-radius: 4px;
+    transition: all 0.24s ease;
+  }
+  
+  .wave-bar.user {
+    animation: userWaveAnim 0.52s infinite alternate;
+    background: linear-gradient(to top, #43ea9e, #36cf82);
+  }
+  
+  .wave-bar.ai {
+    animation: aiWaveAnim 0.5s infinite alternate;
+    background: linear-gradient(to top, #42a5f5, #2196f3);
+  }
+  
+  .wave-bar:nth-child(1) { animation-delay: .0s; }
+  .wave-bar:nth-child(2) { animation-delay: .1s; }
+  .wave-bar:nth-child(3) { animation-delay: .18s; }
+  .wave-bar:nth-child(4) { animation-delay: .23s; }
+  .wave-bar:nth-child(5) { animation-delay: .1s; }
+  .wave-bar:nth-child(6) { animation-delay: .2s; }
+  .wave-bar:nth-child(7) { animation-delay: .26s; }
+  .wave-bar:nth-child(8) { animation-delay: .31s; }
+  
+  @keyframes userWaveAnim { 
+    0% { height: 13px; opacity: 0.7; } 
+    100% { height: 34px; opacity: 1; } 
+  }
+  
+  @keyframes aiWaveAnim { 
+    0% { height: 14px; opacity: 0.7; } 
+    100% { height: 36px; opacity: 1; } 
+  }
+  
+  /* Mic Button */
+  .mic-btn {
+    width: 80px;
+    height: 80px;
+    border: none;
+    border-radius: 50%;
+    background: #42a5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(66, 165, 245, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .mic-btn.active {
+    background: #43ea9e;
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(67, 234, 158, 0.5);
+  }
+  
+  .mic-btn.listening {
+    animation: pulse 1.5s infinite;
+  }
+  
+  .mic-icon { 
+    display: block; 
+  }
+  
+  .stop-icon { 
+    display: none; 
+  }
+  
+  .mic-btn.active .mic-icon { 
+    display: none; 
+  }
+  
+  .mic-btn.active .stop-icon { 
+    display: block; 
+  }
+  
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(67, 234, 158, 0.7); }
+    70% { box-shadow: 0 0 0 14px rgba(67, 234, 158, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(67, 234, 158, 0); }
+  }
+  
+  /* Voice Indicator */
+  .voice-indicator {
+    font-size: 1.05rem;
+    margin-top: 8px;
+    color: #ccccfa;
+    opacity: 0.9;
+    min-height: 28px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  
+  /* Light Theme Adjustments */
+  body.light h1 { 
+    color: #1976d2; 
+  }
+  
+  body.light .sound-wave .wave-bar { 
+    background: #ccc; 
+  }
+  
+  body.light .mic-btn { 
+    background: #1976d2; 
+  }
+  
+  body.light .mic-btn.active { 
+    background: #43ea9e;
+  }
+  
+  body.light .voice-indicator {
+    color: #666;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 640px) {
+    .center-stack {
+      width: 96vw;
+      padding: 26px 5vw 18px 5vw;
+      min-height: 50vh;
+    }
+    
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 24px;
+    }
+    
+    .mic-btn {
+      width: 70px;
+      height: 70px;
+    }
+    
+    .sound-wave {
+      height: 40px;
+      margin-bottom: 20px;
+    }
+    
+    .top-bar {
+      padding: 16px 20px 0 20px;
+    }
+  }
+  
+  /* Status Messages */
+  .status-message {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+  }
+  
+  body.light .status-message {
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+  }
+  
+  /* Connection Indicator */
+  .connection-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #e53935;
+    z-index: 1000;
+  }
+  
+  .connection-indicator.connected {
+    background: #43ea9e;
+  }
+  
+  /* Loading Animation */
+  .loading-dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .loading-dots span {
+    width: 6px;
+    height: 6px;
+    margin: 0 2px;
+    background-color: currentColor;
+    border-radius: 50%;
+    animation: loadingDots 1.4s infinite ease-in-out both;
+  }
+  
+  .loading-dots span:nth-child(1) {
+    animation-delay: -0.32s;
+  }
+  
+  .loading-dots span:nth-child(2) {
+    animation-delay: -0.16s;
+  }
+  
+  @keyframes loadingDots {
+    0%, 80%, 100% { 
+      transform: scale(0);
+      opacity: 0.5;
+    }
+    40% { 
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Error State */
+  .error-state {
+    color: #ff6b6b;
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+  
+  /* Focus States for Accessibility */
+  .mic-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(66, 165, 245, 0.5);
+  }
+  
+  body.light .mic-btn:focus {
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.5);
+  }
+  
+  /* High Contrast Mode Support */
+  @media (prefers-contrast: high) {
+    .wave-bar.user {
+      background: #43ea9e;
+    }
+    
+    .wave-bar.ai {
+      background: #42a5f5;
+    }
+    
+    .mic-btn {
+      border: 2px solid #fff;
+    }
+    
+    body.light .mic-btn {
+      border: 2px solid #21223a;
+    }
+  }
+  
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    .mic-btn.listening {
+      animation: none;
+      box-shadow: 0 0 0 4px rgba(67, 234, 158, 0.5);
+    }
+  }
+  .logo-placeholder {
+    height: 32px;
+    line-height: 32px;
+    font-weight: bold;
+    color: #42a5f5;
+  }
+  
+  .bot-img-placeholder {
+    width: 64px;
+    height: 64px;
+    font-size: 40px;
+    margin-bottom: 14px;
+  }

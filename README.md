@@ -1,4 +1,3 @@
-# RevBot
 # Revolt Motors Voice Chat
 
 A real-time conversational voice interface using the Gemini Live API, replicating the functionality of the Revolt Motors chatbot.

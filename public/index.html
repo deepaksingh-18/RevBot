@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Talk to Rev</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body class="dark">
+  <header class="top-bar">
+    <div class="logo-placeholder">REVOLT</div>
+    <div class="theme-switch">
+      <input type="checkbox" id="themeToggle">
+      <label for="themeToggle"></label>
+    </div>
+  </header>
+  <main>
+    <div class="center-stack">
+        <div class="bot-img-placeholder">🤖</div>
+        <h1>Talk to Rev</h1>
+      
+      <!-- Sound Wave -->
+      <div class="sound-wave" id="soundWave">
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+        <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+      </div>
+      
+      <!-- Mic / Stop button -->
+      <button class="mic-btn" id="micBtn" aria-label="Mic button">
+        <svg class="mic-icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="#fff">
+          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+          <line x1="12" y1="19" x2="12" y2="23"/>
+          <line x1="8" y1="23" x2="16" y2="23"/>
+        </svg>
+        <svg class="stop-icon" width="32" height="32" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="#fff">
+          <rect x="6" y="6" width="12" height="12" rx="2" ry="2"></rect>
+        </svg>
+      </button>
+      
+      <!-- Indicator -->
+      <div class="voice-indicator" id="voiceIndicator">
+        Tap mic and ask anything about Revolt Motors
+      </div>
+    </div>
+  </main>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
